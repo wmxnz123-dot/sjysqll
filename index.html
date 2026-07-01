@@ -33,7 +33,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 2vh 2vw;
+      padding: 3vh 0.5vh;
     }
 
     /* 顶部标题区 */
@@ -82,19 +82,18 @@
 
     /* 全链路流程节点区 */
     .flow-section {
-      height: 20vh;
       position: relative;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      padding-top: 4vh;
-      margin-top: 1vh;
+      padding-top: 3.5vh;
+      margin-bottom: 4vh;
     }
 
     /* 节点间的连线 */
     .flow-line-bg {
       position: absolute;
-      top: 7vh;
+      top: 6.5vh;
       left: 5vw;
       right: 5vw;
       height: 1px;
@@ -154,7 +153,7 @@
       justify-content: center;
       color: var(--primary);
       box-shadow: 0 4px 10px rgba(162, 190, 245, 0.25), inset 0 0 10px rgba(255, 255, 255, 1);
-      margin-bottom: 2.5vh; /* 增加底部间距给序号留位置 */
+      margin-bottom: 2vh; /* 增加底部间距给序号留位置 */
     }
 
     .node-icon-wrapper svg {
@@ -176,10 +175,10 @@
     .node-badge-new {
       background: #1e5dd6;
       color: #fff;
-      font-size: 1vh;
+      font-size: 2vh;
       font-weight: bold;
-      width: 2.2vh;
-      height: 2.2vh;
+      width: 3vh;
+      height: 3vh;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -187,37 +186,19 @@
     }
 
     .node-title {
-      font-size: 2vh;
+      font-size: 2.5vh;
       font-weight: 700;
       color: #17365f;
     }
 
     .node-desc {
       margin-top: 0.8vh;
-      font-size: 1.6vh;
+      font-size: 2vh;
       color: var(--text-sub);
       line-height: 1.6;
       width: 90%;
     }
 
-    /* 分隔符区 */
-    .divider-section {
-      height: 1vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin-top: 3vh;
-    }
-
-    .divider-text {
-      font-size: 2.5vh;
-      font-weight: bold;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 1vw;
-    }
 
 
     /* 系统卡片区连接线 */
@@ -352,159 +333,326 @@
 
     /* 系统卡片区 */
     .cards-section {
-      height: 35vh;
-      display: flex;
-      gap: 1.5vw; /* 增加卡片外框之间的间距 */
-      align-items: stretch;
-      padding: 0 1vw; /* 整体左右留一点边距 */
+      height: 57vh;
+      display: grid;
+      grid-template-columns: 1.62fr 1.16fr 1.62fr 0.8fr 1.16fr;
+      grid-template-rows: 1fr;
+      gap: 1vw;
+      padding: 0 1vw;
     }
 
-    /* 还原带描边的大白底卡片组 */
-    .card-group {
+    .group-card {
       background: #f5f8fd;
       border: 1px solid rgba(187, 208, 251, 0.6);
       border-radius: 1.5vh;
       box-shadow: 0 4px 20px rgba(162, 190, 245, 0.15);
       display: flex;
-      position: relative;
+      flex-direction: column;
+      min-width: 0;
+      padding: 1vh 0.7vw;
+      overflow: hidden;
     }
 
-    /* 卡片组1：单独天枢（左1） */
-    .group-1 {
-      flex: 2;
-      padding: 0;
+    .group-collect {
+      grid-column: 1;
+      grid-row: 1;
     }
 
-    /* 卡片组2：数据服务 + 基层赋能（左2、左3合体） */
-    .group-2 {
-      flex: 6;
-      padding: 0; /* 内部再划分子卡片 */
+    .group-store {
+      grid-column: 2;
+      grid-row: 1;
     }
 
-    /* 新增：数据流通（可信数据空间） */
-    .group-5 {
-      flex: 2;
-      padding: 0;
+    .group-trust {
+      grid-column: 4;
+      grid-row: 1;
     }
 
-    /* 新增：数据资产平台 */
-    .group-6 {
-      flex: 2;
-      padding: 0;
-    }
-    /* 卡片组3：数据运营平台 */
-    .group-3 {
-      flex: 2;
-      padding: 0;
+    .group-dev {
+      grid-column: 3;
+      grid-row: 1;
     }
 
-    /* 卡片组4：数据沙箱 */
-    .group-4 {
-      flex: 2;
-      padding: 0;
+    .group-service {
+      grid-column: 5;
+      grid-row: 1;
     }
 
-    /* 组内分割线 */
-    .inner-divider {
-      width: 1px;
-      background: rgba(226, 232, 240, 0.8);
-      margin: 3vh 0; /* 上下留白 */
+    .group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1vh;
+      gap: 0.5vw;
     }
 
-    /* 统一的子卡片样式 */
-    .sub-card {
+    .group-title {
+      font-size: 1.7vh;
+      font-weight: 700;
+      color: #17365f;
+    }
+
+    .group-tag {
+      padding: 0.24vh 0.6vw;
+      border-radius: 999px;
+      background: rgba(61, 139, 253, 0.12);
+      color: #1e5dd6;
+      font-size: 1.5vh;
+      white-space: nowrap;
+    }
+
+    .module-list {
       flex: 1;
+      display: grid;
+      gap: 0.8vh;
+      min-height: 0;
+    }
+
+    .group-collect .module-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    .group-store .module-list {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+    }
+
+    .group-trust .module-list {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+
+    .group-dev .module-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      gap: 0.8vh;
+    }
+
+    .group-dev .module-item:last-child {
+      grid-column: 1 / span 2;
+      display: grid;
+      grid-template-columns: 8.7vh 1fr;
+      align-items: center;
+      column-gap: 0.85vw;
+      padding: 0.85vh 1vw;
+    }
+
+    .group-dev .module-item:last-child .module-info {
+      display: contents;
+    }
+
+    .group-dev .module-item:last-child .module-icon {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .group-dev .module-item:last-child .module-text {
+      grid-column: 2;
+      grid-row: 1;
+      text-align: left;
+      min-width: 0;
+    }
+
+    .group-dev .module-item:last-child .module-text h4 {
+      white-space: nowrap;
+      margin: 0 0 0.25vh;
+    }
+
+    .group-dev .module-item:last-child .module-text p {
+      white-space: nowrap;
+      margin: 0;
+    }
+
+    .group-dev .module-item {
+      gap: 0.15vh;
+      padding-top: 0.4vh;
+      padding-bottom: 0.35vh;
+    }
+
+    .group-dev .module-icon {
+      width: 8.7vh;
+      height: 8.7vh;
+    }
+
+    .group-dev .module-text h4 {
+      font-size: 2vh;
+      margin: 0.55vh 0 0.35vh;
+    }
+
+    .group-dev .module-text p {
+      font-size: 1.8vh;
+      line-height: 1.35;
+    }
+
+    .group-service .module-list {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+    }
+
+    .module-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      padding: 3vh 1vw;
+      justify-content: center;
+      gap: 0.25vh;
+      padding: 0.55vh 0.45vw 0.5vh;
+      border: 1px solid rgba(214, 225, 245, 0.95);
+      border-radius: 1.1vh;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+      min-width: 0;
+      min-height: 0;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
 
-    
+    .module-item:hover {
+      background: linear-gradient(180deg, rgba(239, 245, 255, 0.98) 0%, rgba(228, 238, 255, 0.98) 100%);
+      border-color: rgba(93, 149, 247, 0.75);
+      box-shadow: 0 10px 24px rgba(53, 101, 218, 0.14);
+      transform: translateY(-1px);
+    }
 
-    .sys-icon {
-      width: 11vh;
-      height: 11vh;
+    .module-item:hover .module-text h4 {
+      color: #1f57cf;
+    }
+
+    .module-item:hover .module-text p {
+      color: #4f6690;
+    }
+
+    .module-info {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2vh;
+      text-align: center;
+    }
+
+    .module-icon {
+      width: 10vh;
+      height: 10vh;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1vh;
     }
 
-    .sys-icon img {
+    .module-icon img {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    .sys-icon svg {
-      width: 100%;
-      height: 100%;
-      display: block;
+    .module-text {
+      min-width: 0;
+      text-align: center;
     }
-    
-    
 
-    .sub-card h3 {
-      font-size: 2.1vh;
-      color: #17365f; /* 标题深蓝 */
-      margin-bottom: 1vh;
+    .module-text h4 {
+      font-size: 2vh;
+      color: #17365f;
+      line-height: 1.2;
       font-weight: 700;
+      margin: 1vh 0 0.7vh;
     }
 
-
-    .sub-card p {
-      font-size: 1.7vh;
-      color: #64748b; /* 描述文字中灰 */
-      line-height: 1.6;
-      flex: 1;
-      display: -webkit-box;
-      line-clamp: 2;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .module-text p {
+      font-size: 1.8vh;
+      color: #64748b;
+      line-height: 1.5;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
     }
 
-    /* 按钮：圆角蓝色渐变 */
     .btn {
-      background: linear-gradient(90deg, #3d8bfd, #1e5dd6);
-      color: #fff;
-      border: none;
-      border-radius: 3vh; /* 更圆的胶囊按钮 */
-      padding: 0.8vh 2vw;
-      font-size: 1.6vh;
-      font-weight: 600;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.5vw;
-      margin-top: 1.5vh;
+      justify-content: center;
+      gap: 0.55vw;
+      background: linear-gradient(90deg, #5d95f7 0%, #3565da 100%);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(30, 93, 214, 0.25);
-      transition: all 0.2s;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(53, 101, 218, 0.22);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
     }
-    
-    .btn:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(30, 93, 214, 0.35);
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(53, 101, 218, 0.28);
     }
-    
-    /* 将进入系统的文字箭头换为纯白色的细小符号 */
+
     .btn::after {
-      content: '>';
-      font-size: 1.1vh;
+      content: ">";
+      font-size: 1em;
       font-weight: 800;
-      margin-left: 0.2vw;
-      font-family: monospace;
+      line-height: 1;
+      margin-left: 0.15vw;
     }
+
+    .module-btn {
+      min-width: 5.9vw;
+      padding: 0.62vh 1.15vw;
+      font-size: 1.3vh;
+      margin-top: 0.5vh;
+      flex-shrink: 0;
+    }
+
+    .group-service .module-item {
+      display: grid;
+      grid-template-columns: 8.2vh 1fr;
+      align-items: center;
+      column-gap: 0.55vw;
+      padding: 0.85vh 0.75vw;
+    }
+
+    .group-store .module-item {
+      display: grid;
+      grid-template-columns: 8.2vh 1fr;
+      align-items: center;
+      column-gap: 0.55vw;
+      padding: 0.85vh 0.75vw;
+    }
+
+    .group-store .module-info,
+    .group-service .module-info {
+      display: contents;
+    }
+
+    .group-store .module-text,
+    .group-service .module-text {
+      grid-column: 2;
+      grid-row: 1;
+      text-align: left;
+      min-width: 0;
+      margin: 0 0 0 1.5vh;
+    }
+
+    .group-service .module-btn {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: start;
+      margin-top: 0;
+      min-width: 6.2vw;
+    }
+
 
     /* 底部保障与AI区 */
     .bottom-section {
-      height: 20vh;
+      height: 17vh;
       display: flex;
       gap: 1.5vw;
-      margin-top: 3vh;
+      margin-top: 2vh;
       padding: 0 1vw;
     }
 
@@ -628,9 +776,9 @@
     }
 
     .sg-text p {
-      font-size: 1.7vh;
+      font-size: 1.6vh;
       color: #64748b;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .ai-box {
@@ -753,75 +901,31 @@
       </div>
       <div class="node-title-row">
         <div class="node-badge-new">01</div>
-        <div class="node-title">数据采集</div>
+        <div class="node-title">数据采集与汇聚</div>
       </div>
-      <div class="node-desc">多源异构数据接入<br>全面感知数据资源</div>
+      <div class="node-desc">多源异构数据接入</br>汇聚形成统一资源池</div>
     </div>
 
     <div class="node">
       <div class="node-icon-wrapper">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.5 7.5L14 10.5M4.5 7.5L10 10.5M12 15v6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>
       </div>
       <div class="node-title-row">
         <div class="node-badge-new">02</div>
-        <div class="node-title">数据汇聚</div>
+        <div class="node-title">数据存储与治理</div>
       </div>
-      <div class="node-desc">汇聚整合多源数据<br>形成统一数据资源池</div>
+      <div class="node-desc">汇聚整合数据资源</br>强化治理管控能力</div>
     </div>
 
     <div class="node">
       <div class="node-icon-wrapper">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8L22 12L18 16M2 12H22M6 8L2 12L6 16"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l-6-6 6-6"/><path d="M15 6l6 6-6 6"/><path d="M14 4l-4 16"/></svg>
       </div>
       <div class="node-title-row">
         <div class="node-badge-new">03</div>
-        <div class="node-title">数据传输</div>
+        <div class="node-title">数据开发与利用</div>
       </div>
-      <div class="node-desc">构建安全高效传输通道<br>保障数据可靠流通</div>
-    </div>
-
-    <div class="node">
-      <div class="node-icon-wrapper">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      </div>
-      <div class="node-title-row">
-        <div class="node-badge-new">04</div>
-        <div class="node-title">数据加工</div>
-      </div>
-      <div class="node-desc">清洗、整合、建模与分析<br>提升数据质量与价值</div>
-    </div>
-
-    <div class="node">
-      <div class="node-icon-wrapper">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-      </div>
-      <div class="node-title-row">
-        <div class="node-badge-new">05</div>
-        <div class="node-title">数据流通</div>
-      </div>
-      <div class="node-desc">打通数据流通链路<br>促进数据合规高效流动</div>
-    </div>
-
-    <div class="node">
-      <div class="node-icon-wrapper">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      </div>
-      <div class="node-title-row">
-        <div class="node-badge-new">06</div>
-        <div class="node-title">数据利用/服务</div>
-      </div>
-      <div class="node-desc">提供数据产品与服务<br>赋能业务应用与创新</div>
-    </div>
-
-    <div class="node">
-      <div class="node-icon-wrapper">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M18 9l-5 5-3-3-4 4"/></svg>
-      </div>
-      <div class="node-title-row">
-        <div class="node-badge-new">07</div>
-        <div class="node-title">数据运营</div>
-      </div>
-      <div class="node-desc">推动数据合规运营与价值释放<br>实现可持续发展</div>
+      <div class="node-desc">协同开发智能应用</br>提升数据利用价值</div>
     </div>
 
     <div class="node">
@@ -829,178 +933,220 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
       </div>
       <div class="node-title-row">
-        <div class="node-badge-new">08</div>
-        <div class="node-title">数据安全</div>
+        <div class="node-badge-new">04</div>
+        <div class="node-title">数据可信流通</div>
       </div>
-      <div class="node-desc">保障数据全生命周期安全<br>构建可信数据环境</div>
+      <div class="node-desc">构建可信流通机制</br>促进数据合规共享</div>
+    </div>
+
+    <div class="node">
+      <div class="node-icon-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h18"/><path d="M6 17V9"/><path d="M12 17V5"/><path d="M18 17v-7"/><circle cx="6" cy="7" r="2"/><circle cx="12" cy="3" r="2"/><circle cx="18" cy="8" r="2"/></svg>
+      </div>
+      <div class="node-title-row">
+        <div class="node-badge-new">05</div>
+        <div class="node-title">数据运营与服务</div>
+      </div>
+      <div class="node-desc">提供数据产品服务</br>推动数据运营增值</div>
     </div>
   </div>
 
-  <!-- 分隔符区 -->
-  <div class="divider-section">
-  </div>
 
   <!-- 下方卡片区连接线 -->
   <div class="card-connectors">
-    <!-- 连接 天枢大数据平台 (覆盖1~4) -->
-    <div class="cc-line cc-1-horiz"></div>
-    <div class="cc-line cc-1-drop-1"></div>
-    <div class="cc-line cc-1-drop-2"></div>
-    <div class="cc-line cc-1-drop cc-arrow"></div>
-
-    <!-- 连接 数据服务平台、基层数据赋能平台、BI (覆盖6) -->
-    <div class="cc-line cc-2-drop"></div>
-    <div class="cc-line cc-2-horiz"></div>
-    <div class="cc-line cc-2-drop-l cc-arrow"></div>
-    <div class="cc-line cc-2-drop-r cc-arrow"></div>
-
-    <!-- 连接 数据运营平台 (覆盖7) -->
-    <div class="cc-line cc-3-horiz"></div>
-    <div class="cc-line cc-3-drop cc-arrow"></div>
-
-    <!-- 连接 数据沙箱 (覆盖8) -->
-    <div class="cc-line cc-4-drop"></div>
-    <div class="cc-line cc-4-horiz"></div>
-    <div class="cc-line cc-4-drop-l cc-arrow"></div>
-    <div class="cc-line cc-4-drop-r cc-arrow"></div>
   </div>
 
   <!-- 系统卡片区 -->
   <div class="cards-section">
-    
-    <!-- 组1：单独天枢 -->
-    <div class="card-group group-1">
-      <div class="sub-card">
-        <div class="sys-icon">
-          <img src="1.png" alt="天枢大数据平台图标">
-        </div>
-        <h3>天枢大数据平台</h3>
-        <p>覆盖采集、汇聚、传输、加工全流程，夯实数据底座</p>
-        <a href="http://10.133.0.63:30400/" class="btn">进入系统</a>
+    <div class="group-card group-collect">
+      <div class="group-header">
+        <div class="group-title">数据采集与汇聚</div>
+        <div class="group-tag">4 个平台</div>
       </div>
-    </div>
-
-    <!-- 组6：数据资产平台 -->
-    <div class="card-group group-6">
-      <div class="sub-card">
-        <div class="sys-icon">
-          <img src="01.png" alt="数据资产平台图标">
-        </div>
-        <h3>数据资产平台</h3>
-        <p>统一资产目录与标签体系，支持盘点管理、确权登记与价值评估</p>
-        <a href="http://10.193.31.14:30303/efp/admin" class="btn">进入系统</a>
-      </div>
-    </div>
-
-    <!-- 组5：数据流通（可信数据空间） -->
-    <div class="card-group group-5">
-      <div class="sub-card">
-        <div class="sys-icon"><img src="6.png" alt="可信数据空间图标"></div>
-        <h3>可信数据空间</h3>
-        <p>构建可信流通环境，保障数据合规协同与可追溯</p>
-        <a href="#trusted-space" class="btn">进入系统</a>
-      </div>
-    </div>
-
-    <!-- 组2：数据服务 + 基层赋能 + EvayBI -->
-    <div class="card-group group-2">
-      <div class="sub-card">
-        <div class="sys-icon"><img src="2.png" alt="数据服务平台图标"></div>
-        <h3>数据服务平台</h3>
-        <p>提供目录检索、API服务与供需对接等功能服务</p>
-        <a href="http://10.133.0.98:18081/" class="btn">进入系统</a>
-      </div>
-
-      <div class="inner-divider"></div>
-      <div class="sub-card">
-        <div class="sys-icon"><img src="3.png" alt="基层数据赋能平台图标"></div>
-        <h3>基层数据赋能平台</h3>
-        <p>提高基层数据获取能力<br>支持多源多场景应用落地</p>
-        <a href="http://10.133.0.98:8088/" class="btn">进入系统</a>
-      </div>
-
-      <div class="inner-divider"></div>
-      <div class="sub-card">
-        <div class="sys-icon"><img src="8.png" alt="基层数据赋能平台图标"></div>
-        <h3>EvayBI</h3>
-        <p>可视化分析与运营报表，支撑洞察决策与复盘评估</p>
-        <a href="http://10.133.0.21:30400/" class="btn">进入系统</a>
-      </div>
-    </div>
-
-    <!-- 组3：数据运营平台 -->
-    <div class="card-group group-3">
-      <div class="sub-card">
-        <div class="sys-icon"><img src="4.png" alt="数据运营平台图标"></div>
-        <h3>数据运营平台</h3>
-        <p>支撑运营管理与监测评估，推动数据价值产出与转化</p>
-        <a href="http://10.133.0.98:18888/" class="btn">进入系统</a>
-      </div>
-    </div>
-
-    <!-- 组4：数据安全（数据沙箱） -->
-    <div class="card-group group-4">
-      <div class="sub-card">
-        <div class="sys-icon"><img src="5.png" alt="数据沙箱图标"></div>
-        <h3>数据沙箱</h3>
-        <p>安全隔离开发与利用环境，保障数据使用安全可控</p>
-        <a href="#sandbox" class="btn">进入系统</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- 底部保障与AI区 -->
-  <div class="bottom-section">
-    
-    <!-- 全链路保障能力 -->
-    <div class="safeguard-box">
-      <div class="sg-header">全链路保障能力</div>
-      <div class="sg-items">
-        <div class="sg-item">
-          <div class="sg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div class="sg-text">
-            <h4>安全可信</h4>
-            <p>全流程安全防护<br>数据可信可控</p>
+      <div class="module-list">
+        <a href="http://10.133.0.63:30400/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="1.png" alt="数据集成图标"></div>
+            <div class="module-text">
+              <h4>数据集成平台</h4>
+              <p>数据集成</p>
+            </div>
           </div>
-        </div>
-        <div class="sg-item">
-          <div class="sg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
-          <div class="sg-text">
-            <h4>高效流通</h4>
-            <p>多渠道传输交换<br>提升流通效率</p>
+        </a>
+        <a href="http://10.133.0.98:8700/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="02.png" alt="数据填报平台图标"></div>
+            <div class="module-text">
+              <h4>数据填报平台</h4>
+              <p>数据填报</p>
+            </div>
           </div>
-        </div>
-        <div class="sg-item">
-          <div class="sg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-          <div class="sg-text">
-            <h4>价值共创</h4>
-            <p>多方协同共享<br>共建价值生态</p>
+        </a>
+        <a href="#agri-system" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="03.png" alt="农业系统图标"></div>
+            <div class="module-text">
+              <h4>物联网平台</h4>
+              <p>物联采集</p>
+            </div>
           </div>
-        </div>
-        <div class="sg-item">
-          <div class="sg-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15L11 17L15 13"/></svg></div>
-          <div class="sg-text">
-            <h4>合规治理</h4>
-            <p>完备制度技术<br>确保合规使用</p>
+        </a>
+        <a href="#internet-system" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="04.png" alt="互联网采集系统图标"></div>
+            <div class="module-text">
+              <h4>互联网采集系统</h4>
+              <p>互联网采集</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
 
-    <!-- AI赋能 -->
-    <div class="ai-box">
-      <div class="ai-logo">
-        <img src="7.png" alt="AI图标">
+    <div class="group-card group-store">
+      <div class="group-header">
+        <div class="group-title">数据存储与治理</div>
+        <div class="group-tag">3 个平台</div>
       </div>
-      <div class="ai-content">
-        <h3>智能体开发平台 <span>AI赋能</span></h3>
-        <p>智能策略驱动新应用 · 提升决策效率 · 释放数据价值</p>
-        <a href="http://10.133.0.83:9000/xiaoyi/" class="btn">进入系统</a>
+      <div class="module-list">
+        <a href="http://10.133.0.63:30400/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="1.png" alt="天枢数据治理平台图标"></div>
+            <div class="module-text">
+              <h4>天枢数据治理平台</h4>
+              <p>统一治理底座</p>
+            </div>
+          </div>
+        </a>
+        <a href="#dataset-quality" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="8.png" alt="质量测评图标"></div>
+            <div class="module-text">
+              <h4>质量测评平台</h4>
+              <p>dataset</p>
+            </div>
+          </div>
+        </a>
+        <a href="#high-quality-dataset" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="02.png" alt="高质量数据集管理图标"></div>
+            <div class="module-text">
+              <h4>高质量数据集</h4>
+              <p>数据集管理</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="group-card group-trust">
+      <div class="group-header">
+        <div class="group-title">数据可信流通</div>
+        <div class="group-tag">1 个平台</div>
+      </div>
+      <div class="module-list">
+        <a href="#trusted-space" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="6.png" alt="可信数据空间平台图标"></div>
+            <div class="module-text">
+              <h4>可信数据空间</h4>
+              <p>合规流通协同</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="group-card group-dev">
+      <div class="group-header">
+        <div class="group-title">数据开发与利用</div>
+        <div class="group-tag">5 个平台</div>
+      </div>
+      <div class="module-list">
+        <a href="http://10.133.0.88:18091" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="03.png" alt="协作开发平台图标"></div>
+            <div class="module-text">
+              <h4>协作开发平台</h4>
+              <p>开发协同</p>
+            </div>
+          </div>
+        </a>
+        <a href="#sandbox" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="5.png" alt="数据沙箱平台图标"></div>
+            <div class="module-text">
+              <h4>数据沙箱平台</h4>
+              <p>在线开发环境</p>
+            </div>
+          </div>
+        </a>
+        <a href="#data-labeling" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="2.png" alt="数据标注平台图标"></div>
+            <div class="module-text">
+              <h4>数据标注平台</h4>
+              <p>数据标注</p>
+            </div>
+          </div>
+        </a>
+        <a href="http://10.133.0.21:30400/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="8.png" alt="EvayBI平台图标"></div>
+            <div class="module-text">
+              <h4>EvayBI</h4>
+              <p>分析利用平台</p>
+            </div>
+          </div>
+        </a>
+        <a href="http://10.133.0.83:9000/xiaoyi/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="7.png" alt="智能体开发平台图标"></div>
+            <div class="module-text">
+              <h4>智能体开发平台</h4>
+              <p>AI 应用开发</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="group-card group-service">
+      <div class="group-header">
+        <div class="group-title">数据运营与服务</div>
+        <div class="group-tag">3 个平台</div>
+      </div>
+      <div class="module-list">
+        <a href="http://10.133.0.98:18888/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="4.png" alt="数据运营平台图标"></div>
+            <div class="module-text">
+              <h4>数据运营平台</h4>
+              <p>运营管理</p>
+            </div>
+          </div>
+        </a>
+        <a href="http://10.133.0.98:18081/" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="2.png" alt="数据服务平台图标"></div>
+            <div class="module-text">
+              <h4>数据服务平台</h4>
+              <p>共享服务</p>
+            </div>
+          </div>
+        </a>
+        <a href="http://10.193.31.14:30303/efp/admin" class="module-item">
+          <div class="module-info">
+            <div class="module-icon"><img src="01.png" alt="数据资产平台图标"></div>
+            <div class="module-text">
+              <h4>数据资产平台</h4>
+              <p>数据一站式入表</p>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
 
   </div>
 
 </body>
-</html>
